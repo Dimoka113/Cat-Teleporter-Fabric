@@ -30,4 +30,17 @@ How To (Developers)
 ------
 *  Clone this repository
 *  I’m sure you probably know what to do next 😉
+*  
+Additionally
+------
+Essentially, this is inspired by the <a href="https://github.com/JustS-js/CatTeleportMod-Fabric">CatTeleportMod-Fabric</a> project, implemented by <a href="https://github.com/JustS-js">JustS</a>.
+But my version has been rewritten from scratch and supports newer versions (at least 1.21.4 for sure)
 
+Using the code
+------
+Although there is a license for this, I want to duplicate it here.
+
+If you use my code or the code of the author of the idea, please consider adding links to the original authors. 
+
+And please read the license. 
+Thank you! 
