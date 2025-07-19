@@ -28,7 +28,7 @@ Commands:
 
 Video Guide
 ------
-https://files.i113d.ru/szhzkltslhfyuetd/cat-guides.mp4
+<video>https://files.i113d.ru/szhzkltslhfyuetd/cat-guides.mp4</video>
 
 How To (Developers)
 ------
