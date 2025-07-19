@@ -44,8 +44,11 @@ public class CatclickerClient implements ClientModInitializer {
         var p = MinecraftClient.getInstance().player;
         if (p == null) return;
 
-        String pname = p.getName().getString();
-        Set<String> points = storage.getPlayerPoints(pname);
+        MinecraftClient client = MinecraftClient.getInstance();
+        String paddress = Objects.requireNonNull(client.getNetworkHandler().getConnection().getAddress())
+                .toString().replaceAll("^([^/]+)/.*:(\\d+)$", "$1:$2");
+
+        Set<String> points = storage.getPlayerPoints(paddress);
         playerpoints = new ArrayList<>(points);
     }
 
