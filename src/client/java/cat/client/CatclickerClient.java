@@ -3,7 +3,6 @@ package cat.client;
 
 
 import cat.client.Data.Data;
-import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import cat.client.Data.ColorText;
@@ -13,7 +12,6 @@ import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallba
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.command.CommandSource;
-import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextColor;
@@ -127,7 +125,9 @@ public class CatclickerClient implements ClientModInitializer {
 
     private static int add(CommandContext<FabricClientCommandSource> ctx) {
         var p = MinecraftClient.getInstance().player;
-        String pname = p.getName().getString();
+
+        MinecraftClient client = MinecraftClient.getInstance();
+        String pname = Objects.requireNonNull(client.getCurrentServerEntry()).toString();
         Set<String> points = storage.getPlayerPoints(pname);
         String name = StringArgumentType.getString(ctx, "name");
         int t1 = Integer.parseInt(StringArgumentType.getString(ctx, "t1"));
@@ -190,7 +190,9 @@ public class CatclickerClient implements ClientModInitializer {
 
     private static int list(CommandContext<FabricClientCommandSource> ctx) {
         var p = MinecraftClient.getInstance().player;
-        String pname = p.getName().getString();
+
+        MinecraftClient client = MinecraftClient.getInstance();
+        String pname = Objects.requireNonNull(client.getCurrentServerEntry()).toString();
         Set<String> pts = storage.getPlayerPoints(pname);
         if (pts.isEmpty()) {
             p.sendMessage(Text.literal("У вас нет сохранённых точек.").setStyle(
@@ -221,7 +223,9 @@ public class CatclickerClient implements ClientModInitializer {
 
     private static int del(CommandContext<FabricClientCommandSource> ctx) {
         var p = MinecraftClient.getInstance().player;
-        String pname = p.getName().getString();
+
+        MinecraftClient client = MinecraftClient.getInstance();
+        String pname = Objects.requireNonNull(client.getCurrentServerEntry()).toString();
         String name = StringArgumentType.getString(ctx, "name");
         int[] arr = storage.getPlayerPointData(pname, name);
         if (arr == null) {
@@ -250,7 +254,9 @@ public class CatclickerClient implements ClientModInitializer {
         data.loadFromFile("config/CatTeleporter/config.json");
 
         var p = MinecraftClient.getInstance().player;
-        String pname = p.getName().getString();
+        MinecraftClient client = MinecraftClient.getInstance();
+
+        String pname = Objects.requireNonNull(client.getCurrentServerEntry()).toString();
         String name = StringArgumentType.getString(ctx, "name");
         int[] arr = storage.getPlayerPointData(pname, name);
         if (arr == null) {
