@@ -30,7 +30,7 @@ How To (Developers)
 ------
 *  Clone this repository
 *  I’m sure you probably know what to do next 😉
-*  
+
 Additionally
 ------
 Essentially, this is inspired by the <a href="https://github.com/JustS-js/CatTeleportMod-Fabric">CatTeleportMod-Fabric</a> project, implemented by <a href="https://github.com/JustS-js">JustS</a>.
