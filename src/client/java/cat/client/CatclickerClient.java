@@ -127,7 +127,9 @@ public class CatclickerClient implements ClientModInitializer {
         var p = MinecraftClient.getInstance().player;
 
         MinecraftClient client = MinecraftClient.getInstance();
-        String paddress = Objects.requireNonNull(client.getNetworkHandler().getConnection().getAddress()).toString();
+        String paddress = Objects.requireNonNull(client.getNetworkHandler().getConnection().getAddress())
+                .toString().replaceAll("^([^/]+)/.*:(\\d+)$", "$1:$2");
+
         Set<String> points = storage.getPlayerPoints(paddress);
         String name = StringArgumentType.getString(ctx, "name");
         int t1 = Integer.parseInt(StringArgumentType.getString(ctx, "t1"));
@@ -192,7 +194,8 @@ public class CatclickerClient implements ClientModInitializer {
         var p = MinecraftClient.getInstance().player;
 
         MinecraftClient client = MinecraftClient.getInstance();
-        String paddress = Objects.requireNonNull(client.getNetworkHandler().getConnection().getAddress()).toString();
+        String paddress = Objects.requireNonNull(client.getNetworkHandler().getConnection().getAddress())
+                .toString().replaceAll("^([^/]+)/.*:(\\d+)$", "$1:$2");
         Set<String> pts = storage.getPlayerPoints(paddress);
         if (pts.isEmpty()) {
             p.sendMessage(Text.literal("У вас нет сохранённых точек.").setStyle(
@@ -225,7 +228,8 @@ public class CatclickerClient implements ClientModInitializer {
         var p = MinecraftClient.getInstance().player;
 
         MinecraftClient client = MinecraftClient.getInstance();
-        String paddress = Objects.requireNonNull(client.getNetworkHandler().getConnection().getAddress()).toString();
+        String paddress = Objects.requireNonNull(client.getNetworkHandler().getConnection().getAddress())
+                .toString().replaceAll("^([^/]+)/.*:(\\d+)$", "$1:$2");
         String name = StringArgumentType.getString(ctx, "name");
         int[] arr = storage.getPlayerPointData(paddress, name);
         if (arr == null) {
@@ -256,7 +260,8 @@ public class CatclickerClient implements ClientModInitializer {
         var p = MinecraftClient.getInstance().player;
         MinecraftClient client = MinecraftClient.getInstance();
 
-        String paddress = Objects.requireNonNull(client.getNetworkHandler().getConnection().getAddress()).toString();
+        String paddress = Objects.requireNonNull(client.getNetworkHandler().getConnection().getAddress())
+                .toString().replaceAll("^([^/]+)/.*:(\\d+)$", "$1:$2");
         String name = StringArgumentType.getString(ctx, "name");
         int[] arr = storage.getPlayerPointData(paddress, name);
         if (arr == null) {
