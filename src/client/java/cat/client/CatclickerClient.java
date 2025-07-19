@@ -127,8 +127,8 @@ public class CatclickerClient implements ClientModInitializer {
         var p = MinecraftClient.getInstance().player;
 
         MinecraftClient client = MinecraftClient.getInstance();
-        String pname = Objects.requireNonNull(client.getCurrentServerEntry()).toString();
-        Set<String> points = storage.getPlayerPoints(pname);
+        String paddress = Objects.requireNonNull(client.getNetworkHandler().getConnection().getAddress()).toString();
+        Set<String> points = storage.getPlayerPoints(paddress);
         String name = StringArgumentType.getString(ctx, "name");
         int t1 = Integer.parseInt(StringArgumentType.getString(ctx, "t1"));
         int t2 = Integer.parseInt(StringArgumentType.getString(ctx, "t2"));
@@ -143,7 +143,7 @@ public class CatclickerClient implements ClientModInitializer {
 
 
         if (!points.contains(name) | fourpoint) {
-            storage.addPlayerPoint(pname, name, t1, t2);
+            storage.addPlayerPoint(paddress, name, t1, t2);
             p.sendMessage(
                     Text.empty()
                             .append(ColorText.create("Точка ", 0x47ff52))
@@ -192,8 +192,8 @@ public class CatclickerClient implements ClientModInitializer {
         var p = MinecraftClient.getInstance().player;
 
         MinecraftClient client = MinecraftClient.getInstance();
-        String pname = Objects.requireNonNull(client.getCurrentServerEntry()).toString();
-        Set<String> pts = storage.getPlayerPoints(pname);
+        String paddress = Objects.requireNonNull(client.getNetworkHandler().getConnection().getAddress()).toString();
+        Set<String> pts = storage.getPlayerPoints(paddress);
         if (pts.isEmpty()) {
             p.sendMessage(Text.literal("У вас нет сохранённых точек.").setStyle(
                     Style.EMPTY.withColor(TextColor.fromRgb(0xF88379))
@@ -204,7 +204,7 @@ public class CatclickerClient implements ClientModInitializer {
                     Style.EMPTY.withColor(TextColor.fromRgb(0x47ff52))
             ), false);
             for (String n : pts) {
-                int[] arr = storage.getPlayerPointData(pname, n);
+                int[] arr = storage.getPlayerPointData(paddress, n);
                 Text text = Text.empty()
                         .append(ColorText.create("- ", 0x189AB4))
                         .append(ColorText.create(n, 0x00ffd1))
@@ -225,9 +225,9 @@ public class CatclickerClient implements ClientModInitializer {
         var p = MinecraftClient.getInstance().player;
 
         MinecraftClient client = MinecraftClient.getInstance();
-        String pname = Objects.requireNonNull(client.getCurrentServerEntry()).toString();
+        String paddress = Objects.requireNonNull(client.getNetworkHandler().getConnection().getAddress()).toString();
         String name = StringArgumentType.getString(ctx, "name");
-        int[] arr = storage.getPlayerPointData(pname, name);
+        int[] arr = storage.getPlayerPointData(paddress, name);
         if (arr == null) {
             p.sendMessage(Text.empty()
                     .append(ColorText.create("У вас нет точки ", 0xF88379))
@@ -236,7 +236,7 @@ public class CatclickerClient implements ClientModInitializer {
 
                     , false);
         } else {
-            storage.removePlayerPoint(pname, name);
+            storage.removePlayerPoint(paddress, name);
             p.sendMessage(Text.empty()
                             .append(ColorText.create("Точка ", 0xf5ff59))
                             .append(ColorText.create(name, 0xfeb027))
@@ -256,9 +256,9 @@ public class CatclickerClient implements ClientModInitializer {
         var p = MinecraftClient.getInstance().player;
         MinecraftClient client = MinecraftClient.getInstance();
 
-        String pname = Objects.requireNonNull(client.getCurrentServerEntry()).toString();
+        String paddress = Objects.requireNonNull(client.getNetworkHandler().getConnection().getAddress()).toString();
         String name = StringArgumentType.getString(ctx, "name");
-        int[] arr = storage.getPlayerPointData(pname, name);
+        int[] arr = storage.getPlayerPointData(paddress, name);
         if (arr == null) {
             p.sendMessage(Text.empty()
                             .append(ColorText.create("У вас нет точки ", 0xF88379))
