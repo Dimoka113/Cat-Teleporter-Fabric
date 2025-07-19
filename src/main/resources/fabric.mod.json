@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "catteleporter",
+  "version": "${version}",
+  "name": "Cat-Teleporter-Fabric",
+  "description": "Just a mod that simplifies the use of the teleportation mechanism with the help of cats.",
+  "authors": ["i113d"],
+  "contact": {
+    "homepage": "https://i113d.ru",
+    "sources": "https://github.com/Dimoka113/Cat-Teleporter-Fabric",
+    "issues": "https://github.com/Dimoka113/Cat-Teleporter-Fabric/issues"
+  },
+  "license": "GNU GENERAL PUBLIC LICENSE 3, 29 June 2007",
+  "icon": "assets/catclicker/cat-pack.png",
+  "environment": "client",
+  "entrypoints": {
+    "fabric-datagen": [
+      "cat.client.CatclickerDataGenerator"
+    ],
+    "client": [
+      "cat.client.CatclickerClient"
+    ],
+    "main": [
+      "cat.Catclicker"
+    ]
+  },
+  "mixins": [
+    "catclicker.mixins.json",
+    {
+      "config": "catclicker.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
