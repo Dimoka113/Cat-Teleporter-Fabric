@@ -275,7 +275,7 @@ public class CatclickerClient implements ClientModInitializer {
 
                     , false);
         } else {
-            new Disconnet(data).disconnectAndReconnect(p.getName().getString(), name);
+            new Disconnet(data).disconnectAndReconnect(paddress, name);
         }
         return 1;
     }
