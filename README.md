@@ -34,6 +34,7 @@ How To (Developers)
 Additionally
 ------
 Essentially, this is inspired by the <a href="https://github.com/JustS-js/CatTeleportMod-Fabric">CatTeleportMod-Fabric</a> project, implemented by <a href="https://github.com/JustS-js">JustS</a>.
+
 But my version has been rewritten from scratch and supports newer versions (at least 1.21.4 for sure)
 
 Using the code
