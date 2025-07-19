@@ -26,6 +26,10 @@ Commands:
 *  `/cat go <name>` - Will move to this point
 *  `/cat del <name> <t1> <t2> ` - Delete point for teleportation
 
+Video Guide
+------
+https://files.i113d.ru/szhzkltslhfyuetd/cat-guides.mp4
+
 How To (Developers)
 ------
 *  Clone this repository
