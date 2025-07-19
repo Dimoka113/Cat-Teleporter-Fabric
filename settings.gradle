@@ -9,3 +9,10 @@ pluginManagement {
 }
 
 rootProject.name = 'Catclicker'
+
+include 'main'
+include 'mod-1.20.4'
+include 'mod-1.21.4'
+include 'mod-1.21.5'
+include 'mod-1.21.6'
+include 'mod-1.21.7'
